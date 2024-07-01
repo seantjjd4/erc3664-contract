@@ -5,18 +5,23 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:rinkeby": "npx hardhat run --network rinkeby scripts/deploy.js",
-    "deploy:mumbai": "npx hardhat run --network mumbai scripts/deploy.js",
-    "deploy:localhost": "npx hardhat run scripts/deploy.js",
-    "test:Pet": "npx hardhat test test/Pet_test.js",
-    "test:ReceiverContract": "npx hardhat test test/ReceiverContract_test.js --network localhost"
+    "deploy-goerli:full-deploy": "npx hardhat run --network goerli scripts/full-deploy-verify.js",
+    "deploy-mumbai:full-deploy": "npx hardhat run --network mumbai scripts/full-deploy-verify.js",
+    "deploy-localhost:full-deploy": "npx hardhat run --network localhost scripts/full-deploy-verify.js",
+    "deploy-mumbai:pet": "npx hardhat run --network mumbai scripts/pet-deploy-verify.js",
+    "deploy-rinkeby:pet": "npx hardhat run --network rinkeby scripts/pet-deploy-verify.js",
+    "deploy-goerli:pet": "npx hardhat run --network goerli scripts/pet-deploy-verify.js",
+    "test-localhost:pet": "npx hardhat test test/pet-core.js --network localhost",
+    "test:pet-core": "npx hardhat test test/Pet/pet-core.js",
+    "test:pet-random": "npx hardhat test test/Pet/pet-random.js",
+    "test-localhost:hat": "npx hardhat test test/Component/hat.js --network localhost",
+    "test-localhost:governance": "npx hardhat test test/Governance/governance.js --network localhost"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
-    "@nomiclabs/hardhat-etherscan": "^3.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "chai": "^4.3.6",
     "dotenv": "^16.0.1",
@@ -25,7 +30,10 @@
     "hardhat-gas-reporter": "^1.0.8"
   },
   "dependencies": {
+    "@chainlink/contracts": "^0.5.0",
+    "@nomiclabs/hardhat-etherscan": "^3.0.1",
     "@openzeppelin/contracts": "^4.6.0",
-    "chai-as-promised": "^7.1.1"
+    "chai-as-promised": "^7.1.1",
+    "solidity-coverage": "^0.8.2"
   }
 }
